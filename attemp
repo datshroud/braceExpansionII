@@ -1,0 +1,73 @@
+class Solution {
+public:
+    int lctOfBrace(int a, string s){ // a is lct of '{'
+        int count = 0;
+        int ans;
+        for (int i = a + 1; i < s.length(); i++){
+            if (s[i] == '{') count++;
+            else if (s[i] == '}') {
+                if (count != 0) count--;
+                else {
+                    ans = i;
+                    break;
+                }
+            }
+        }
+        return ans;
+    }
+
+    vector<string> braceExpansionII(string s) {
+        vector<string> ans;
+        int len = s.length();
+        //make it compact as possible ({{a,z},a{b,c},{ab,z}} => {a,z,a{b,c},ab,z})
+        vector<string> str;
+        string s0;
+        s0 = s[0];
+        str.push_back(s0);
+        for (int i = 1; i < len; i++){
+            if (s[i] == '{'){
+                if (s[i - 1] == '{' || s[i - 1] == ','){
+                    int lct = lctOfBrace(i, s);
+                    s.erase(lct, 1);
+                    len -= 1;
+                }
+                else {
+                    string st;
+                    st = s[i];
+                    str.push_back(st);
+                }
+            }
+            else {
+                string st;
+                st = s[i];
+                str.push_back(st);
+            }
+            
+        }
+        return str;
+
+        // for (int i = 0; i < n; i++){
+        //     if (s[i] == '{') {
+        //         count++;
+        //         lct = i;
+        //     }
+        //     else if (s[i] == '}'){
+        //         if (s[i + 1] == '{') count++;
+        //         else if (s[i + 1] != '{') {
+        //             while (index != count){
+        //                 for (int j = lct; j = i; j++){
+        //                     if (s[j] != '}' && s[j] != '{' && s[j] != ',') str[index].push_back(s[j]); //maybe wrong as f
+        //                     else if (s[j] == '}') {
+        //                         lct = j + 1;
+        //                         break;
+        //                     }
+        //                 }
+        //                 index++;
+        //             }
+        //             multiply(str);
+        //         }
+        //     }
+        // }
+        
+    }
+};
