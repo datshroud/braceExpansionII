@@ -26,7 +26,16 @@ public:
         }
         return ans;
     }
-    int multiply()
+
+    vector<string> calMultiply(vector<vector<string>> multiply, int a, int index){
+        int size1 = multiply.size();
+        vector<string> ans;
+        if (multiply[0] != NULL){
+            while (index != multiply[0].size()){
+                
+            }
+        }
+    }
 
     vector<string> braceExpansionII(string s) {
         vector<string> ans;
@@ -66,9 +75,15 @@ public:
                 for (int j = i + 1; j <= findLctBraceMultiply(i, str); j++){
                     if (str[j] == '{') count2++;
                     else if (str[j] == '}') {
-                        if (str[j + 1] != '{' && )
+                        if (str[j + 1] != '{' ){
+                            count2++;
+                        }
                     }
+                    else multiply[count2].push_back(str[j]);
                 }
+                // cal a{b,c}{d,e}f{g,h}
+
+                i = findLctBraceMultiply(i, str) + 1;
             }
         }
         
