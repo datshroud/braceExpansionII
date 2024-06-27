@@ -15,6 +15,18 @@ public:
         }
         return ans;
     }
+    int findLctBraceMultiply(int a; vector<string> str){ // return the lct of }
+        int count = 0; 
+        int size = str.size();
+        int ans;
+        for (int i = a + 1; i < size; i++){
+            if (str[i] == '{') count++;
+            else if (str[i] == '}') count--;
+            else if (str[i] == ',' && count == 0) ans = i - 1;
+        }
+        return ans;
+    }
+    int multiply()
 
     vector<string> braceExpansionII(string s) {
         vector<string> ans;
@@ -42,32 +54,22 @@ public:
                 st = s[i];
                 str.push_back(st);
             }
-            
+           
         }
+        // step2: a{b,c}{d,e}f{g,h}") = {"abdfg", "abdfh", "abefg", "abefh", "acdfg", "acdfh", "acefg", "acefh"}
+        int size = str.size();
+        vector<string> str2;
+        for (int i = 1; i < size; i++){
+            if (str[i] = ','){
+                int count2 = 0;
+                for (int j = i + 1; j <= findLctBraceMultiply(i, str); j++){
+                    
+                }
+            }
+        }
+        
         return str;
 
-        // for (int i = 0; i < n; i++){
-        //     if (s[i] == '{') {
-        //         count++;
-        //         lct = i;
-        //     }
-        //     else if (s[i] == '}'){
-        //         if (s[i + 1] == '{') count++;
-        //         else if (s[i + 1] != '{') {
-        //             while (index != count){
-        //                 for (int j = lct; j = i; j++){
-        //                     if (s[j] != '}' && s[j] != '{' && s[j] != ',') str[index].push_back(s[j]); //maybe wrong as f
-        //                     else if (s[j] == '}') {
-        //                         lct = j + 1;
-        //                         break;
-        //                     }
-        //                 }
-        //                 index++;
-        //             }
-        //             multiply(str);
-        //         }
-        //     }
-        // }
         
     }
 };
